@@ -14,26 +14,28 @@
   <body>
     <a-scene background="color: #FFFFFF">
       <a-assets>
-        <img id="stadium-01" crossorigin="anonymous" src="assets/images/football-bg-01.jpeg">
-        <img id="stadium-02" crossorigin="anonymous" src="assets/images/football-bg-02.jpg">
+        <img id="city" crossorigin="anonymous" src="assets/images/football-bg-01.jpeg">
         <img id="thesun-logo" crossorigin="anonymous" src="assets/images/thesun-logo-03.png">
         <img id="thumb-01" crossorigin="anonymous" src="assets/images/kane-01.png">
 
+        <!-- <img id="city" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/city.jpg"> -->
         <img id="city-thumb" crossorigin="anonymous" src="assets/images/thumb-city.jpg">
         <img id="cubes-thumb" crossorigin="anonymous" src="assets/images/thumb-cubes.jpg">
         <img id="sechelt-thumb" crossorigin="anonymous" src="assets/images/thumb-sechelt.jpg">
         <img id="cubes" crossorigin="anonymous" src="assets/images/cubes.jpg">
         <img id="sechelt" crossorigin="anonymous" src="assets/images/sechelt.jpg">
 
+        <!-- Image link template to be reused. -->
         <script id="link" type="text/html">
           <a-entity class="link"
-            geometry="primitive: plane; height: 1; width: 1"
-            material="opacity: 0.0; transparent: true"
+            geometry="primitive: flat; height: 1; width: 1"
+            material="shader: flat; src: ${thumb}"
             event-set__1="_event: mousedown; scale: 1 1 1"
             event-set__2="_event: mouseup; scale: 1.2 1.2 1"
             event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
             event-set__4="_event: mouseleave; scale: 1 1 1"
             set-image="on: click; target: #image-360; src: ${src}"
+            sound="on: click; src: #click-sound"
             custom="on: click; target: #image-360; src: ${src}"></a-entity>
         </script>
       </a-assets>
@@ -42,7 +44,7 @@
         <img id="my-image" src="assets/images/cubes.jpg">
       </a-assets> -->
 
-      <a-sky id="image-360" radius="5" src="#stadium-01"></a-sky>
+      <a-sky radius="5" src="#city"></a-sky>
       
       <!-- Using the asset management system. -->
       <a-image
@@ -75,23 +77,65 @@
           <a-entity template="src: #link" data-src="#sechelt" data-thumb="#sechelt-thumb"></a-entity>
         </a-entity> -->
 
-        <a-entity layout="type: line; margin: 1.5" position="-2 1 0">
+        <a-entity layout="type: line; margin: 2" position="-2 1 0">
           <a-image
           position="-1 0.9 0"
           width="1"
           height="1"
-          template="src: #link"
-          data-src="#stadium-02"
-          data-thumb="#cubes"
           src="#thumb-01"></a-image>
 
           <a-image
           position="-1 0.9 0"
           width="1"
           height="1"
-          template="src: #link"
-          data-src="#stadium-01"
-          data-thumb="#cubes"
+          src="#thumb-01"></a-image>
+
+          <a-image
+          position="-1 0.9 0"
+          width="1"
+          height="1"
+          src="#thumb-01"></a-image>
+
+          <a-image
+          position="-1 0.9 0"
+          width="1"
+          height="1"
+          src="#thumb-01"></a-image>
+
+          <a-image
+          position="-1 0.9 0"
+          width="1"
+          height="1"
+          src="#thumb-01"></a-image>
+
+          <a-image
+          position="-1 0.9 0"
+          width="1"
+          height="1"
+          src="#thumb-01"></a-image>
+
+          <a-image
+          position="-1 0.9 0"
+          width="1"
+          height="1"
+          src="#thumb-01"></a-image>
+
+          <a-image
+          position="-1 0.9 0"
+          width="1"
+          height="1"
+          src="#thumb-01"></a-image>
+
+          <a-image
+          position="-1 0.9 0"
+          width="1"
+          height="1"
+          src="#thumb-01"></a-image>
+
+          <a-image
+          position="-1 0.9 0"
+          width="1"
+          height="1"
           src="#thumb-01"></a-image>
 
           <a-image
@@ -111,31 +155,9 @@
           <a-camera></a-camera>
         </a-entity> -->
 
-      <!-- <a-entity position="0 1.8 2">
-        <a-entity camera look-controls wasd-controls></a-entity>
-      </a-entity> -->
-
       <a-entity position="0 1.8 2">
-        <a-entity camera look-controls wasd-controls>
-            <a-cursor id="cursor"
-            animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
-            animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
-            event-set__1="_event: mouseenter; color: springgreen"
-            event-set__2="_event: mouseleave; color: black"
-            fuse="true"
-            raycaster="objects: .link"></a-cursor>
-        </a-entity>
+        <a-entity camera look-controls wasd-controls></a-entity>
       </a-entity>
-
-      <!-- <a-entity camera look-controls>
-          <a-cursor id="cursor"
-            animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
-            animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
-            event-set__1="_event: mouseenter; color: springgreen"
-            event-set__2="_event: mouseleave; color: black"
-            fuse="true"
-            raycaster="objects: .link"></a-cursor>
-        </a-entity> -->
     </a-scene>
   </body>
 </html>
