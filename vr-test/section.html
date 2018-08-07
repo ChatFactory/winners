@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>360&deg; Image Gallery</title>
+  <meta name="description" content="360&deg; Image Gallery - A-Frame">
+  <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+  <script src="https://npmcdn.com/aframe-animation-component@3.0.1"></script>
+  <script src="https://npmcdn.com/aframe-event-set-component@3.0.1"></script>
+  <script src="https://npmcdn.com/aframe-layout-component@3.0.1"></script>
+  <script src="https://npmcdn.com/aframe-template-component@3.1.1"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="components/section.js"></script>
+</head>
+
+<body>
+  <a-scene background="color: #FFFFFF">
+    <a-assets>
+      <!-- <img id="city" crossorigin="anonymous" src="assets/images/football-bg-01.jpeg"> -->
+      <img id="thesun-logo" crossorigin="anonymous" src="assets/images/thesun-logo.png">
+      <img id="row-one-image-0" crossorigin="anonymous" src="assets/images/white_pixel.png">
+      <img id="row-one-image-1" crossorigin="anonymous" src="assets/images/white_pixel.png">
+      <img id="row-one-image-2" crossorigin="anonymous" src="assets/images/white_pixel.png">
+      <img id="row-one-image-3" crossorigin="anonymous" src="assets/images/white_pixel.png">
+      <img id="row-two-image-4" crossorigin="anonymous" src="assets/images/white_pixel.png">
+      <img id="row-two-image-5" crossorigin="anonymous" src="assets/images/white_pixel.png">
+      <img id="row-two-image-6" crossorigin="anonymous" src="assets/images/white_pixel.png">
+      <img id="row-two-image-7" crossorigin="anonymous" src="assets/images/white_pixel.png">
+    </a-assets>
+
+
+    <a-sky radius="5" src="#city"></a-sky>
+
+    <!-- Using the asset management system. -->
+    <a-image position="0 2.7 0" width="2" src="#thesun-logo"></a-image>
+
+    <a-entity section></a-entity>
+
+    <a-entity id="row-one" layout="type: line;" position="-4 1.5 0">
+      <!-- <a-entity text="color: black; value: Hello World;"></a-entity>
+      <a-entity text="color: black; value: Hello World;"></a-entity>
+      <a-entity text="color: black; value: Hello World;"></a-entity>
+      <a-entity text="color: black; value: Hello World;"></a-entity> -->
+    </a-entity>
+
+    <a-entity id="row-two" layout="type: line;" position="-4 0 0">
+        <!-- <a-entity text="color: black; value: Hello World;"></a-entity>
+        <a-entity text="color: black; value: Hello World;"></a-entity>
+        <a-entity text="color: black; value: Hello World;"></a-entity>
+        <a-entity text="color: black; value: Hello World;"></a-entity> -->
+    </a-entity>
+
+
+
+    <a-entity position="0 1.8 2">
+      <a-entity camera look-controls wasd-controls></a-entity>
+    </a-entity>
+  </a-scene>
+</body>
+
+</html>
