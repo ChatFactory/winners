@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>360&deg; Image Gallery</title>
+    <meta name="description" content="360&deg; Image Gallery - A-Frame">
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <script src="https://npmcdn.com/aframe-animation-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-event-set-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-layout-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-template-component@3.1.1"></script>
+    <script src="components/set-image.js"></script>
+    <script type="text/javascript" src="custom-js/custom.js"></script>
+  </head>
+  <body>
+    <a-scene background="color: #FFFFFF">
+      <a-assets>
+        <img id="thesun-logo" crossorigin="anonymous" src="sun-logo.png">
+        <img id="article1" crossorigin="anonymous" src="img1.png">
+        <img id="article2" crossorigin="anonymous" src="img2.png">
+        <img id="article3" crossorigin="anonymous" src="img3.png">
+        <img id="city" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/city.jpg">
+        <img id="cubes" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/cubes.jpg">
+        <img id="city1" crossorigin="anonymous" src="360-1.jpg">
+        <audio id="click-sound" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
+
+        <!-- Image link template to be reused. -->
+        <script id="link" type="text/html">
+          <a-entity class="link"
+            geometry="primitive: plane; height: 1; width: 1"
+            material="shader: flat; src: ${thumb}"
+            event-set__1="_event: mousedown; scale: 1 1 1"
+            event-set__2="_event: mouseup; scale: 1.2 1.2 1"
+            event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
+            event-set__4="_event: mouseleave; scale: 1 1 1"
+            set-image="on: click; target: #image-360; src: ${src}"
+            sound="on: click; src: #click-sound"
+            custom="on: click; target: #image-360; src: ${src}"></a-entity>
+        </script>
+      </a-assets>
+
+      <!-- <a-assets>
+        <img id="my-image" src="assets/images/cubes.jpg">
+      </a-assets> -->
+
+      <a-sky id="image-360" radius="5" src="#city"></a-sky>
+      
+      <!-- Using the asset management system. -->
+      <a-image
+        position="0 3.8 -2"
+        width="2"
+        src="#thesun-logo"></a-image>
+
+      <!-- Image links. -->
+      <a-entity id="links" layout="type: line; margin: 1.5" position="-1.5 1 0">
+        <a-entity template="src: #link" data-src="#city" data-thumb="#article1"></a-entity>
+        <a-entity template="src: #link" data-src="#cubes" data-thumb="#article2"></a-entity>
+        <a-entity template="src: #link" data-src="#city1" data-thumb="#article3"></a-entity>
+      </a-entity>
+
+      <!-- <a-entity id="links" layout="type: line; margin: 1.5" position="0 -1 -4"> -->
+          <!-- <a-entity data-src="#cubes" data-thumb="#cubes-thumb"></a-entity> -->
+        <!-- </a-entity> -->
+
+      <a-entity 
+        id="back-btn"
+        position="-1 2 0"
+        text="anchor: left; width: 6; color: red; value: Back"
+        visible="false">
+      </a-entity>
+
+      <a-entity position="0 1.8 2">
+        <a-entity camera look-controls wasd-controls>
+          <a-cursor id="cursor"
+          animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+          animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+          event-set__1="_event: mouseenter; color: springgreen"
+          event-set__2="_event: mouseleave; color: black"
+          fuse="true"
+          raycaster="objects: .link"></a-cursor>
+      </a-entity>
+        </a-entity>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>
