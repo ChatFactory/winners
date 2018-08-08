@@ -18,19 +18,22 @@ AFRAME.registerComponent('set-image', {
 
     console.log('\n\n redirect user to', data.src);
 
-    this.setupFadeAnimation();
+    // this.setupFadeAnimation();
 
     console.log('\n\n data.on, data.dur and el', data.on, data.dur, el);
 
-    el.addEventListener(data.on, function () {
+    el.addEventListener('click', function (evt) {
+      evt.preventDefault();
+      window.location = data.src
       // Fade out image.
-      data.target.emit('set-image-fade');
+      // data.target.emit('set-image-fade');
       // Wait for fade to complete.
-      setTimeout(function () {
-        // Set image.
-        data.target.setAttribute('material', 'src', data.src);
-        // window.location = data.src
-      }, data.dur);
+      // setTimeout(function () {
+      //   // Set image.
+      //   // data.target.setAttribute('material', 'src', data.src);
+      //   window.location = data.src
+      //   evt.preventDefault();
+      // }, data.dur);
     });
   },
 
