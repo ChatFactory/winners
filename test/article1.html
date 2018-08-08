@@ -14,17 +14,18 @@
     <script type="text/javascript" src="custom-js/custom.js"></script>
   </head>
   <body id="article1">
-    <audio id="audio1" src="https://s3-eu-west-1.amazonaws.com/thesun-gif-mp4-transcoder/hackathon/article1.mp3"></audio>
+    <audio id="audio1" src="assets/mp3/article1.mp3"></audio>
     <a-scene background="color: #FFFFFF">
       <a-assets>
         <img id="thesun-logo" crossorigin="anonymous" src="assets/sun-logo.png">
+        <img id="audio" crossorigin="anonymous" src="assets/audio.png">
         <img id="article1" crossorigin="anonymous" src="assets/img1.png">
         <img id="article2" crossorigin="anonymous" src="assets/img2.png">
         <img id="article3" crossorigin="anonymous" src="assets/img3.png">
         <img id="city" crossorigin="anonymous" src="assets/018.jpg">
         <img id="cubes" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/cubes.jpg">
         <img id="city1" crossorigin="anonymous" src="assets/360-1.jpg">
-        <audio id="click-sound" crossorigin="anonymous" src="https://s3-eu-west-1.amazonaws.com/thesun-gif-mp4-transcoder/hackathon/article1.mp3"></audio>
+        <audio id="click-sound" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
 
         <!-- Image link template to be reused. -->
         <script id="link" type="text/html">
@@ -39,7 +40,21 @@
             event-set__4="_event: mouseleave; scale: 1 1 1"
             set-image="on: click; target: #thesun-logo; src: ${src}"
             sound="on: click; src: #click-sound"
-            custom="on: click; target: #thesun-logo; src: ${src}"></a-entity>
+            custom="on: click; target: #thesun-logo; src: ${src}; action: navigate;"></a-entity>
+        </script>
+
+        <script type="text/html" id="read">
+          <a-entity class="read"
+            position="1.315 1.4 0.5"
+            scale="0.2 0.2 0.1"
+            width="2"
+            geometry="primitive: plane; height: 1; width: 2"
+            material="shader: flat; src: ${thumb}"
+            event-set__1="_event: mousedown; scale: 0.25 0.25 0.1"
+            event-set__2="_event: mouseup; scale: 0.2 0.2 0.1"
+            event-set__3="_event: mouseenter; scale: 0.25 0.25 0.1"
+            event-set__4="_event: mouseleave; scale: 0.2 0.2 0.1"
+            custom="on: click; action: read; target: #audio1; "></a-entity>
         </script>
       </a-assets>
 
@@ -48,22 +63,11 @@
       <!-- Using the asset management system. -->
       <a-entity template="src: #link" data-src="index.html" data-thumb="#thesun-logo"></a-entity>
 
-      <!-- <a-image
-        id="home-link" 
-        position="0 3.8 -2"
-        width="2"
-        src="#thesun-logo"></a-image> -->
-
-      <!-- Image links. -->
-<!--       <a-entity id="links" layout="type: line; margin: 1.5" position="-1.5 1 0">
-        <a-entity template="src: #link" data-src="article1.html" data-thumb="#article1"></a-entity>
-        <a-entity template="src: #link" data-src="article2.html" data-thumb="#article2"></a-entity>
-        <a-entity template="src: #link" data-src="article3.html" data-thumb="#article3"></a-entity>
-      </a-entity> -->
-
       <a-image position="0 1.8 0.5" scale="2 1 1" src="assets/aimg1.jpg"></a-image>
-      <!-- <a-image position="1 1.8 0.5" scale="2 1 1" src="assets/018.jpg"></a-image> -->
-      <a-entity position="0 1 0.5" scale="3 2 1" text="value: WHILE everyone is jetting off to catch some sun in the tropics we've decided stay here in the UK to decide where is the better staycation - Wales or England.;" sound="src: url(https://s3-eu-west-1.amazonaws.com/thesun-gif-mp4-transcoder/hackathon/article1.mp3); autoplay: true"></a-entity>
+      
+      <a-entity template="src: #read" data-src="" data-thumb="#audio"></a-entity>
+
+      <a-entity position="0 0.8 0.5" scale="3 2 1" text="value: WHILE everyone is jetting off to catch some sun in the tropics we've decided stay here in the UK to decide where is the better staycation - Wales or England.\n\n From sleeping in a cosy secluded cabin for two in Wales to staying in a luxurious spa hotel in England we weigh up the comforts between these two idyllic holidays.;"></a-entity>
 
       <a-entity position="0 1.8 2">
         <a-entity camera look-controls wasd-controls>
@@ -73,7 +77,7 @@
           event-set__1="_event: mouseenter; color: springgreen"
           event-set__2="_event: mouseleave; color: black"
           fuse="true"
-          raycaster="objects: .link"></a-cursor>
+          raycaster="objects: .link, .read"></a-cursor>
       </a-entity>
         </a-entity>
       </a-entity>
