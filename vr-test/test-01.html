@@ -18,8 +18,9 @@
           console.log('\n\n clicked');
           var elem = this.el;
           this.el.addEventListener('click', function (evt) {
+            evt.preventDefault();
             console.log('\n\n\n data source', elem.getAttribute("data-src"));
-            window.location = elem.getAttribute("data-src")
+            window.location = elem.getAttribute("data-src");
           });
         }
         });
