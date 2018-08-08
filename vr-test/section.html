@@ -27,33 +27,51 @@
       <img id="row-two-image-5" crossorigin="anonymous" src="assets/images/white_pixel.png">
       <img id="row-two-image-6" crossorigin="anonymous" src="assets/images/white_pixel.png">
       <img id="row-two-image-7" crossorigin="anonymous" src="assets/images/white_pixel.png">
+      <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
+      <img id="skyTexture"
+        src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg">
+        
+      <script id="link" type="text/html">
+        <a-entity class="link"
+          position="0 3.8 -2"
+          width="2"
+          geometry="primitive: box; height: 1; width: 2; depth: 1;"
+          material="shader: flat; src: ${thumb}"
+          event-set__1="_event: mousedown; scale: 1 1 1"
+          event-set__2="_event: mouseup; scale: 1.2 1.2 1"
+          event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
+          event-set__4="_event: mouseleave; scale: 1 1 1"
+          set-image="on: click; target: #thesun-logo; src: ${src}"
+          sound="on: click; src: #click-sound"
+          custom="on: click; target: #thesun-logo; src: ${src}"></a-entity>
+      </script>
+
     </a-assets>
 
+    <a-plane src="#groundTexture" rotation="-90 0 0" width="30" height="30"
+    repeat="30 30"></a-plane>
 
-    <a-sky radius="5" src="#city"></a-sky>
+    <a-sky src="#skyTexture"></a-sky>
+    <a-light type="ambient" color="#445451"></a-light> -->
+    <a-light type="point" intensity="2" position="0 0 0"></a-light>
+    <!-- <a-sky radius="10" src="#city"></a-sky> -->
 
     <!-- Using the asset management system. -->
-    <a-image position="0 2.7 0" width="2" src="#thesun-logo"></a-image>
+    <a-entity template="src: #link" data-src="index.html" data-thumb="#thesun-logo"></a-entity>
+
+    <!-- <a-image position="0 2.7 0" width="2" src="#thesun-logo"></a-image> -->
 
     <a-entity section></a-entity>
 
-    <a-entity id="row-one" layout="type: line;" position="-4 1.5 0">
-      <!-- <a-entity text="color: black; value: Hello World;"></a-entity>
-      <a-entity text="color: black; value: Hello World;"></a-entity>
-      <a-entity text="color: black; value: Hello World;"></a-entity>
-      <a-entity text="color: black; value: Hello World;"></a-entity> -->
+    <a-entity id="row-one" layout="type: line; margin: 1.5" position="-3.5 0.8 0">
     </a-entity>
 
-    <a-entity id="row-two" layout="type: line;" position="-4 0 0">
-        <!-- <a-entity text="color: black; value: Hello World;"></a-entity>
-        <a-entity text="color: black; value: Hello World;"></a-entity>
-        <a-entity text="color: black; value: Hello World;"></a-entity>
-        <a-entity text="color: black; value: Hello World;"></a-entity> -->
+    <a-entity id="row-two" layout="type: line; margin: 1.5" position="-3.5 0.8 -4">
     </a-entity>
 
 
 
-    <a-entity position="0 1.8 2">
+    <a-entity position="0 1 3">
       <a-entity camera look-controls wasd-controls></a-entity>
     </a-entity>
   </a-scene>
