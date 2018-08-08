@@ -16,11 +16,7 @@ AFRAME.registerComponent('set-image', {
     var data = this.data;
     var el = this.el;
 
-    console.log('\n\n redirect user to', data.src);
-
     this.setupFadeAnimation();
-
-    console.log('\n\n data.on, data.dur and el', data.on, data.dur, el);
 
     el.addEventListener(data.on, function () {
       // Fade out image.
@@ -29,7 +25,6 @@ AFRAME.registerComponent('set-image', {
       setTimeout(function () {
         // Set image.
         data.target.setAttribute('material', 'src', data.src);
-        // window.location = data.src
       }, data.dur);
     });
   },
