@@ -27,27 +27,32 @@
         <audio id="click-sound" crossorigin="anonymous" src="https://s3-eu-west-1.amazonaws.com/thesun-gif-mp4-transcoder/hackathon/article1.mp3"></audio>
 
         <!-- Image link template to be reused. -->
-      <!--   <script id="link" type="text/html">
+        <script id="link" type="text/html">
           <a-entity class="link"
-            geometry="primitive: plane; height: 1; width: 1"
+            position="0 3.8 -2"
+            width="2"
+            geometry="primitive: plane; height: 1; width: 2"
             material="shader: flat; src: ${thumb}"
             event-set__1="_event: mousedown; scale: 1 1 1"
             event-set__2="_event: mouseup; scale: 1.2 1.2 1"
             event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
             event-set__4="_event: mouseleave; scale: 1 1 1"
-            set-image="on: click; target: #image-360; src: ${src}"
+            set-image="on: click; target: #thesun-logo; src: ${src}"
             sound="on: click; src: #click-sound"
-            custom="on: click; target: #image-360; src: ${src}"></a-entity>
-        </script> -->
+            custom="on: click; target: #thesun-logo; src: ${src}"></a-entity>
+        </script>
       </a-assets>
 
       <a-sky id="image-360" radius="5" src="#city"></a-sky>
       
       <!-- Using the asset management system. -->
-      <a-image
+      <a-entity template="src: #link" data-src="index.html" data-thumb="#thesun-logo"></a-entity>
+
+      <!-- <a-image
+        id="home-link" 
         position="0 3.8 -2"
         width="2"
-        src="#thesun-logo"></a-image>
+        src="#thesun-logo"></a-image> -->
 
       <!-- Image links. -->
 <!--       <a-entity id="links" layout="type: line; margin: 1.5" position="-1.5 1 0">
