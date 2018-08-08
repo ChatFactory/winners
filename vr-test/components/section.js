@@ -9,7 +9,7 @@ AFRAME.registerComponent('section', {
     init: function () {
         var self = this;
         $.ajax({
-            url: "http://hackathon-image-proxy.azurewebsites.net/?url=https://thesun.co.uk/wp-json/thesun/v1/posts/lite",
+            url: "https://hackathon-image-proxy.azurewebsites.net/?url=https://thesun.co.uk/wp-json/thesun/v1/posts/lite",
             context: document.body
         }).done(function (response) {
             var count = 0;
