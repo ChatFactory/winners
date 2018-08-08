@@ -28,8 +28,8 @@ AFRAME.registerComponent('set-image', {
       // Wait for fade to complete.
       setTimeout(function () {
         // Set image.
-        // data.target.setAttribute('material', 'src', data.src);
-        window.location = data.src
+        data.target.setAttribute('material', 'src', data.src);
+        // window.location = data.src
       }, data.dur);
     });
   },
