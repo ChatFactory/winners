@@ -9,7 +9,31 @@
     <script src="https://npmcdn.com/aframe-event-set-component@3.0.1"></script>
     <script src="https://npmcdn.com/aframe-layout-component@3.0.1"></script>
     <script src="https://npmcdn.com/aframe-template-component@3.1.1"></script>
-    <script src="components/set-image.js"></script>
+    <!-- <script src="https://rawgit.com/mayognaise/aframe-mouse-cursor-component/master/dist/aframe-mouse-cursor-component.min.js"></script> -->
+    <script src="https://rawgit.com/ngokevin/aframe-animation-component/master/dist/aframe-animation-component.min.js"></script>
+  <script>
+    AFRAME.registerComponent('change-color-on-click', {
+    // Could use a schem to preserve the color! then simply change it on update
+    // if clicked?
+    init: function () {
+      console.log('\n\n clicked');
+      var COLORS = [
+      'pink',
+      //'blue',
+      'yellow',
+      'red',
+      'peachpuff',
+      '#2EAFAC',
+      '#BAE'];
+      this.el.addEventListener('click', function (evt) {
+      var randomIndex = Math.floor(Math.random() * COLORS.length);
+      var newColor = COLORS[randomIndex];
+      this.setAttribute('material', 'color', newColor);
+      console.log('I was clicked at: ', evt.detail.intersection.point, "and my new color is: ", newColor);
+      });
+    }
+    });
+  </script>
   </head>
   <body>
     <a-scene>
@@ -41,21 +65,22 @@
 
       <!-- Image links. -->
       <a-entity id="links" layout="type: line; margin: 1.5" position="0 -1 -4">
-        <a-entity template="src: #link" data-src="#cubes" data-thumb="#cubes-thumb"></a-entity>
-        <a-entity template="src: #link" data-src="#city" data-thumb="#city-thumb"></a-entity>
-        <a-entity template="src: #link" data-src="#sechelt" data-thumb="#sechelt-thumb"></a-entity>
+        <a-entity template="src: #link" change-color-on-click="" data-src="#cubes" data-thumb="#cubes-thumb"></a-entity>
+        <a-entity template="src: #link" change-color-on-click="" data-src="#city" data-thumb="#city-thumb"></a-entity>
+        <a-entity template="src: #link" change-color-on-click="" data-src="#sechelt" data-thumb="#sechelt-thumb"></a-entity>
       </a-entity>
 
       <!-- Camera + cursor. -->
-      <a-entity camera look-controls>
+      <!-- <a-entity camera look-controls>
         <a-cursor id="cursor"
-          animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
-          animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
-          event-set__1="_event: mouseenter; color: springgreen"
-          event-set__2="_event: mouseleave; color: black"
-          fuse="true"
-          raycaster="objects: .link"></a-cursor>
-      </a-entity>
+         mouse-cursor></a-cursor>
+      </a-entity> -->
+
+      <a-entity position="0 1.8 4">
+          <a-entity camera look-controls mouse-cursor>
+              <a-cursor geometry="primitive: ring" material="color: #FFC0CB;    shader: flat"></a-
+          </a-entity>
+        </a-entity>
     </a-scene>
   </body>
 </html>
