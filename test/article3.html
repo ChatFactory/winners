@@ -39,6 +39,10 @@
         </script>
       </a-assets>
 
+      <!-- <a-assets>
+        <img id="my-image" src="assets/images/cubes.jpg">
+      </a-assets> -->
+
       <a-sky id="image-360" radius="5" src="#city"></a-sky>
       
       <!-- Using the asset management system. -->
@@ -54,6 +58,17 @@
         <a-entity template="src: #link" data-src="article3.html" data-thumb="#article3"></a-entity>
       </a-entity>
 
+      <!-- <a-entity id="links" layout="type: line; margin: 1.5" position="0 -1 -4"> -->
+          <!-- <a-entity data-src="#cubes" data-thumb="#cubes-thumb"></a-entity> -->
+        <!-- </a-entity> -->
+
+      <a-entity 
+        id="back-btn"
+        position="-1 2 0"
+        visible="false"
+        custom="on: click; target: #image-360; src: ${src}">
+         <a-image src="assets/back-button.png"></a-image>
+      </a-entity>
 
       <a-entity position="0 1.8 2">
         <a-entity camera look-controls wasd-controls>
