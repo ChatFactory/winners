@@ -11,73 +11,25 @@
     <script src="https://npmcdn.com/aframe-layout-component@3.0.1"></script>
     <script src="https://npmcdn.com/aframe-template-component@3.1.1"></script>
     <script src="components/set-image.js"></script>
-    <!-- <script src="https://rawgit.com/ngokevin/aframe-animation-component/master/dist/aframe-animation-component.min.js"></script> -->
-    <!-- <script>
-        AFRAME.registerComponent('change-color-on-click', {
-        init: function () {
-          console.log('\n\n clicked');
-          var elem = this.el;
-          this.el.addEventListener('click', function (evt) {
-            evt.preventDefault();
-            console.log('\n\n\n data source', elem.getAttribute("data-src"));
-            window.location = elem.getAttribute("data-src");
-          });
-        }
-        });
-      </script> -->
-    <script>
-      window.addEventListener('load', function(){
-
-      var box2 = document.getElementById('bodyCan'),
-      boxleft, // left position of moving box
-      startx, // starting x coordinate of touch point
-      dist = 0, // distance traveled by touch point
-      touchobj = null // Touch object holder
-
-      console.log('\n\n\n\n\n\n\n body');
-
-      box2.addEventListener('touchstart', function(e){
-      touchobj = e.changedTouches[0] // reference first touch point
-      boxleft = parseInt(box2.style.left) // get left position of box
-      startx = parseInt(touchobj.clientX) // get x coord of touch point
-      e.preventDefault() // prevent default click behavior
-      }, false)
-
-      box2.addEventListener('touchmove', function(e){
-      touchobj = e.changedTouches[0] // reference first touch point for this event
-      var dist = parseInt(touchobj.clientX) - startx // calculate dist traveled by touch point
-      // move box according to starting pos plus dist
-      // with lower limit 0 and upper limit 380 so it doesn't move outside track:
-      box2.style.left = ( (boxleft + dist > 380)? 380 : (boxleft + dist < 0)? 0 : boxleft + dist ) + 'px'
-      e.preventDefault()
-      }, false)
-
-      }, false)
-    </script>
     <style>
       html {
         touch-action: none;
       }
     </style>
   </head>
-  <body id="bodyCan">
-    <a-scene background="color: #FFFFFF" id="scene-board">
+  <body>
+    <a-scene background="color: #FFFFFF">
       <a-assets>
         <img id="stadium-01" crossorigin="anonymous" src="assets/images/football-bg-01.jpeg">
         <img id="stadium-02" crossorigin="anonymous" src="assets/images/football-bg-02.jpg">
+        <img id="bg-03" crossorigin="anonymous" src="assets/images/bg-03.jpg">
+        <img id="bg-04" crossorigin="anonymous" src="assets/images/bg-04.jpg">
         <img id="thesun-logo" crossorigin="anonymous" src="assets/images/thesun-logo-03.png">
-        <img id="thumb-01" crossorigin="anonymous" src="assets/images/kane-01.png">
 
-        <img id="city-thumb" crossorigin="anonymous" src="assets/images/thumb-city.jpg">
-        <img id="cubes-thumb" crossorigin="anonymous" src="assets/images/thumb-cubes.jpg">
-        <img id="sechelt-thumb" crossorigin="anonymous" src="assets/images/thumb-sechelt.jpg">
-        <img id="cubes" crossorigin="anonymous" src="assets/images/cubes.jpg">
-        <img id="sechelt" crossorigin="anonymous" src="assets/images/sechelt.jpg">
-
-        <img id="messi" crossorigin="anonymous" src="assets/images/messi-02.png">
-        <img id="neymar" crossorigin="anonymous" src="assets/images/neymar-01.png">
-        <img id="kane" crossorigin="anonymous" src="assets/images/kane-01.png">
-        <img id="ronaldo" crossorigin="anonymous" src="assets/images/ronaldo-01.png">
+        <img id="messi" crossorigin="anonymous" src="assets/images/messi-002.png">
+        <img id="neymar" crossorigin="anonymous" src="assets/images/neymar-02.png">
+        <img id="kane" crossorigin="anonymous" src="assets/images/kane-02.png">
+        <img id="ronaldo" crossorigin="anonymous" src="assets/images/ronaldo-02.png">
 
         <script id="link" type="text/html">
           <a-entity class="link"
@@ -107,8 +59,7 @@
         width="1"
         height="1"
         template="src: #link"
-        change-color-on-click=""
-        data-src="videos/player-01.html"
+        data-src="#bg-03"
         src="#messi"></a-image>
 
         <a-image
@@ -116,20 +67,23 @@
         width="1"
         height="1"
         template="src: #link"
-        change-color-on-click=""
-        data-src="videos/player-02.html"
+        data-src="#stadium-02"
         src="#kane"></a-image>
 
         <a-image
         position="-1 0.9 0"
         width="1"
         height="1"
+        template="src: #link"
+        data-src="#stadium-01"
         src="#neymar"></a-image>
 
         <a-image
         position="-1 0.9 0"
         width="1"
         height="1"
+        template="src: #link"
+        data-src="#bg-04"
         src="#ronaldo"></a-image>
       </a-entity>
 
@@ -142,12 +96,6 @@
             raycaster="objects: .link"></a-cursor>
         </a-entity>
       </a-entity>
-
-      <!-- <a-entity position="0 1.8 2">
-          <a-entity camera look-controls mouse-cursor>
-              <a-cursor geometry="primitive: ring" material="color: #FFC0CB;    shader: flat"></a-
-          </a-entity>
-        </a-entity> -->
     </a-scene>
   </body>
 </html>
