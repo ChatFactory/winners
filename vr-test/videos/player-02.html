@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>360&deg; Image Gallery</title>
+    <meta name="description" content="360&deg; Image Gallery - A-Frame">
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <script src="https://npmcdn.com/aframe-animation-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-event-set-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-layout-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-template-component@3.1.1"></script>
+    <script src="../components/set-image.js"></script>
+  </head>
+  <body>
+    <a-scene background="color: #FFFFFF">
+      <a-assets>
+        <!-- Single source video. -->
+        <video id="video" style="display:none" crossorigin="anonymous" playsinline webkit-playsinline>
+          <source type="video/mp4"
+               src="../assets/videos/video-01.mp4" />
+        </video>
+      </a-assets>
+
+      <a-videosphere id="video-360" rotation="0 180 0" src="#video" 
+        play-on-window-click
+        play-on-vrdisplayactivate-or-enter-vr>
+      </a-videosphere>
+    </a-scene>
+  </body>
+</html>

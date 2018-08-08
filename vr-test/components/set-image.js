@@ -9,8 +9,6 @@ AFRAME.registerComponent('set-image', {
     on: {type: 'string'},
     target: {type: 'selector'},
     src: {type: 'string'},
-    videoTarget: {type: 'string'},
-    ctype: {type: 'string'},
     dur: {type: 'number', default: 300}
   },
 
@@ -25,19 +23,9 @@ AFRAME.registerComponent('set-image', {
       data.target.emit('set-image-fade');
       // Wait for fade to complete.
       setTimeout(function () {
-        console.log('\n\n redirect user here');
-        // if (data.ctype === 'video') {
-        //   console.log('\n\n video', data.src, data.ctype);
-        //   document.getElementById('image-360').style.display = 'none';
-        //   data.videoTarget.setAttribute('material', 'src', data.src);
-        // } else {
-        //   console.log('\n\n image', data.src, data.ctype);
-        //   data.target.setAttribute('material', 'src', data.src);
-        // }
-        // document.getElementById('image-bg').style.display = 'none';
         // Set image.
-        window.location = "videos/player-01.html";
         // data.target.setAttribute('material', 'src', data.src);
+        window.location = data.src
       }, data.dur);
     });
   },

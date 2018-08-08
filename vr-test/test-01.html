@@ -25,16 +25,10 @@
         <img id="cubes" crossorigin="anonymous" src="assets/images/cubes.jpg">
         <img id="sechelt" crossorigin="anonymous" src="assets/images/sechelt.jpg">
 
-        <!-- Single source video. -->
-        <!-- <video id="video-1" style="display:none" crossorigin="anonymous" playsinline webkit-playsinline>
-          <source type="video/mp4"
-               src="https://ucarecdn.com/fadab25d-0b3a-45f7-8ef5-85318e92a261/" />
-        </video> -->
-
-        <!-- <video id="video-2" style="display:none" crossorigin="anonymous" playsinline webkit-playsinline>
-          <source type="video/mp4"
-               src="assets/images/video-01.mp4" />
-        </video> -->
+        <img id="messi" crossorigin="anonymous" src="assets/images/messi-02.png">
+        <img id="neymar" crossorigin="anonymous" src="assets/images/neymar-01.png">
+        <img id="kane" crossorigin="anonymous" src="assets/images/kane-01.png">
+        <img id="ronaldo" crossorigin="anonymous" src="assets/images/ronaldo-01.png">
 
         <script id="link" type="text/html">
           <a-entity class="link"
@@ -44,21 +38,12 @@
             event-set__2="_event: mouseup; scale: 1.2 1.2 1"
             event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
             event-set__4="_event: mouseleave; scale: 1 1 1"
-            set-image="on: click; target: #image-360; videoTarget: #video-360; src: ${src}; ctype: ${ctype}"
-            custom="on: click; target: #image-360; videoTarget: #video-360; src: ${src}"></a-entity>
+            set-image="on: click; target: #image-360; src: ${src}"></a-entity>
         </script>
       </a-assets>
 
       <a-sky id="image-360" radius="5" src="#stadium-01"></a-sky>
-      <!-- <a-sky id="image-bg" radius="5" src="#stadium-01"></a-sky> -->
 
-      <!-- <a-videosphere id="video-360" rotation="0 180 0" src="#video-2" 
-                     play-on-window-click
-                     play-on-vrdisplayactivate-or-enter-vr>
-      </a-videosphere> -->
-
-      <!-- <a-video src="assets/images/video-01.mp4"></a-video> -->
-      
       <!-- Using the asset management system. -->
       <a-image
         position="0.1 2.7 0"
@@ -77,34 +62,28 @@
         width="1"
         height="1"
         template="src: #link"
-        data-src="#video-2"
-        data-ctype="video"
-        data-thumb="#cubes"
-        src="#thumb-01"></a-image>
+        data-src="videos/player-01.html"
+        src="#messi"></a-image>
 
         <a-image
         position="-1 0.9 0"
         width="1"
         height="1"
         template="src: #link"
-        data-src="#stadium-01"
-        data-ctype="img"
-        data-thumb="#cubes"
-        src="#thumb-01"></a-image>
+        data-src="videos/player-02.html"
+        src="#kane"></a-image>
 
         <a-image
         position="-1 0.9 0"
         width="1"
         height="1"
-        src="#thumb-01"
-        data-ctype="img"></a-image>
+        src="#neymar"></a-image>
 
         <a-image
         position="-1 0.9 0"
         width="1"
         height="1"
-        src="#thumb-01"
-        data-ctype="img"></a-image>
+        src="#ronaldo"></a-image>
       </a-entity>
 
       <a-entity position="0 1.8 2">
@@ -114,7 +93,6 @@
             animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
             event-set__1="_event: mouseenter; color: springgreen"
             event-set__2="_event: mouseleave; color: black"
-            fuse="true"
             raycaster="objects: .link"></a-cursor>
         </a-entity>
       </a-entity>

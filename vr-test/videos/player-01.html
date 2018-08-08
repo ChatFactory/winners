@@ -14,57 +14,17 @@
   <body>
     <a-scene background="color: #FFFFFF">
       <a-assets>
-        <img id="stadium-01" crossorigin="anonymous" src="../assets/images/football-bg-01.jpeg">
-        <img id="stadium-02" crossorigin="anonymous" src="../assets/images/football-bg-02.jpg">
-        <img id="thesun-logo" crossorigin="anonymous" src="../assets/images/thesun-logo-03.png">
-        <img id="thumb-01" crossorigin="anonymous" src="../assets/images/kane-01.png">
-
-        <img id="city-thumb" crossorigin="anonymous" src="../assets/images/thumb-city.jpg">
-        <img id="cubes-thumb" crossorigin="anonymous" src="../assets/images/thumb-cubes.jpg">
-        <img id="sechelt-thumb" crossorigin="anonymous" src="../assets/images/thumb-sechelt.jpg">
-        <img id="cubes" crossorigin="anonymous" src="../assets/images/cubes.jpg">
-        <img id="sechelt" crossorigin="anonymous" src="../assets/images/sechelt.jpg">
-
         <!-- Single source video. -->
-        <video id="video-1" style="display:none" crossorigin="anonymous" playsinline webkit-playsinline>
+        <video id="video" style="display:none" crossorigin="anonymous" playsinline webkit-playsinline>
           <source type="video/mp4"
-               src="https://ucarecdn.com/fadab25d-0b3a-45f7-8ef5-85318e92a261/" />
+               src="../assets/videos/video-03.mp4" />
         </video>
-
-        <video id="video-2" style="display:none" crossorigin="anonymous" playsinline webkit-playsinline>
-          <source type="video/mp4"
-               src="../assets/images/video-01.mp4" />
-        </video>
-
-        <script id="link" type="text/html">
-          <a-entity class="link"
-            geometry="primitive: plane; height: 1; width: 1"
-            material="opacity: 0.0; transparent: true"
-            event-set__1="_event: mousedown; scale: 1 1 1"
-            event-set__2="_event: mouseup; scale: 1.2 1.2 1"
-            event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
-            event-set__4="_event: mouseleave; scale: 1 1 1"
-            set-image="on: click; target: #image-360; videoTarget: #video-360; src: ${src}; ctype: ${ctype}"
-            custom="on: click; target: #image-360; videoTarget: #video-360; src: ${src}"></a-entity>
-        </script>
       </a-assets>
 
-      <a-videosphere id="video-360" rotation="0 180 0" src="#video-2" 
-                     play-on-window-click
-                     play-on-vrdisplayactivate-or-enter-vr>
+      <a-videosphere id="video-360" rotation="0 180 0" src="#video" 
+        play-on-window-click
+        play-on-vrdisplayactivate-or-enter-vr>
       </a-videosphere>
-
-      <a-entity position="0 1.8 2">
-        <a-entity camera look-controls wasd-controls>
-            <a-cursor id="cursor"
-            animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
-            animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
-            event-set__1="_event: mouseenter; color: springgreen"
-            event-set__2="_event: mouseleave; color: black"
-            fuse="true"
-            raycaster="objects: .link"></a-cursor>
-        </a-entity>
-      </a-entity>
     </a-scene>
   </body>
 </html>
