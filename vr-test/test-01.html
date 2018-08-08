@@ -9,74 +9,108 @@
     <script src="https://npmcdn.com/aframe-event-set-component@3.0.1"></script>
     <script src="https://npmcdn.com/aframe-layout-component@3.0.1"></script>
     <script src="https://npmcdn.com/aframe-template-component@3.1.1"></script>
-    <!-- <script src="https://rawgit.com/mayognaise/aframe-mouse-cursor-component/master/dist/aframe-mouse-cursor-component.min.js"></script> -->
+    <!-- <script src="components/set-image.js"></script> -->
     <script src="https://rawgit.com/ngokevin/aframe-animation-component/master/dist/aframe-animation-component.min.js"></script>
-  <script>
-    AFRAME.registerComponent('change-color-on-click', {
-    // Could use a schem to preserve the color! then simply change it on update
-    // if clicked?
-    init: function () {
-      console.log('\n\n clicked');
-      var COLORS = [
-      'pink',
-      //'blue',
-      'yellow',
-      'red',
-      'peachpuff',
-      '#2EAFAC',
-      '#BAE'];
-      this.el.addEventListener('click', function (evt) {
-      var randomIndex = Math.floor(Math.random() * COLORS.length);
-      var newColor = COLORS[randomIndex];
-      this.setAttribute('material', 'color', newColor);
-      console.log('I was clicked at: ', evt.detail.intersection.point, "and my new color is: ", newColor);
-      });
-    }
-    });
-  </script>
+    <script>
+        AFRAME.registerComponent('change-color-on-click', {
+        init: function () {
+          console.log('\n\n clicked');
+          var elem = this.el;
+          this.el.addEventListener('click', function (evt) {
+            console.log('\n\n\n data source', elem.getAttribute("data-src"));
+            window.location = elem.getAttribute("data-src")
+          });
+        }
+        });
+      </script>
   </head>
   <body>
-    <a-scene>
+    <a-scene background="color: #FFFFFF">
       <a-assets>
-        <img id="city" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/city.jpg">
-        <img id="city-thumb" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
-        <img id="cubes-thumb" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-cubes.jpg">
-        <img id="sechelt-thumb" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-sechelt.jpg">
-        <audio id="click-sound" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
-        <img id="cubes" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/cubes.jpg">
-        <img id="sechelt" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg">
+        <img id="stadium-01" crossorigin="anonymous" src="assets/images/football-bg-01.jpeg">
+        <img id="stadium-02" crossorigin="anonymous" src="assets/images/football-bg-02.jpg">
+        <img id="thesun-logo" crossorigin="anonymous" src="assets/images/thesun-logo-03.png">
+        <img id="thumb-01" crossorigin="anonymous" src="assets/images/kane-01.png">
 
-        <!-- Image link template to be reused. -->
+        <img id="city-thumb" crossorigin="anonymous" src="assets/images/thumb-city.jpg">
+        <img id="cubes-thumb" crossorigin="anonymous" src="assets/images/thumb-cubes.jpg">
+        <img id="sechelt-thumb" crossorigin="anonymous" src="assets/images/thumb-sechelt.jpg">
+        <img id="cubes" crossorigin="anonymous" src="assets/images/cubes.jpg">
+        <img id="sechelt" crossorigin="anonymous" src="assets/images/sechelt.jpg">
+
+        <img id="messi" crossorigin="anonymous" src="assets/images/messi-02.png">
+        <img id="neymar" crossorigin="anonymous" src="assets/images/neymar-01.png">
+        <img id="kane" crossorigin="anonymous" src="assets/images/kane-01.png">
+        <img id="ronaldo" crossorigin="anonymous" src="assets/images/ronaldo-01.png">
+
         <script id="link" type="text/html">
           <a-entity class="link"
             geometry="primitive: plane; height: 1; width: 1"
-            material="shader: flat; src: ${thumb}"
-            event-set__1="_event: mousedown; scale: 1 1 1"
-            event-set__2="_event: mouseup; scale: 1.2 1.2 1"
-            event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
-            event-set__4="_event: mouseleave; scale: 1 1 1"
-            set-image="on: click; target: #image-360; src: ${src}"
-            sound="on: click; src: #click-sound"></a-entity>
+            material="opacity: 0.0; transparent: true"
+            set-image="on: click; target: #image-360; src: ${src}"></a-entity>
         </script>
       </a-assets>
 
-      <!-- 360-degree image. -->
-      <a-sky id="image-360" radius="10" src="#city"></a-sky>
+      <a-sky id="image-360" radius="5" src="#stadium-01"></a-sky>
 
-      <!-- Image links. -->
-      <a-entity id="links" layout="type: line; margin: 1.5" position="0 -1 -4">
-        <a-entity template="src: #link" change-color-on-click="" data-src="#cubes" data-thumb="#cubes-thumb"></a-entity>
-        <a-entity template="src: #link" change-color-on-click="" data-src="#city" data-thumb="#city-thumb"></a-entity>
-        <a-entity template="src: #link" change-color-on-click="" data-src="#sechelt" data-thumb="#sechelt-thumb"></a-entity>
+      <!-- Using the asset management system. -->
+      <a-image
+        position="0.1 2.7 0"
+        width="2"
+        src="#thesun-logo"></a-image>
+
+      <a-entity 
+        position="-0.9 2 0"
+        text="anchor: left; width: 6; font: dejavu; color: white; value: WORLD CUP 2018">
       </a-entity>
 
-      <!-- Camera + cursor. -->
-      <!-- <a-entity camera look-controls>
-        <a-cursor id="cursor"
-         mouse-cursor></a-cursor>
-      </a-entity> -->
+      <a-entity layout="type: line; margin: 1.5" position="-2 1 0">
 
-      <a-entity position="0 1.8 4">
+        <a-image
+        position="-1 0.9 0"
+        width="1"
+        height="1"
+        template="src: #link"
+        change-color-on-click=""
+        data-src="videos/player-01.html"
+        src="#messi"></a-image>
+
+        <a-image
+        position="-1 0.9 0"
+        width="1"
+        height="1"
+        template="src: #link"
+        change-color-on-click=""
+        data-src="videos/player-02.html"
+        src="#kane"></a-image>
+
+        <a-image
+        position="-1 0.9 0"
+        width="1"
+        height="1"
+        src="#neymar"></a-image>
+
+        <a-image
+        position="-1 0.9 0"
+        width="1"
+        height="1"
+        src="#ronaldo"></a-image>
+      </a-entity>
+
+      <!-- <a-entity position="0 1.8 2"> -->
+        <!-- <a-entity camera look-controls wasd-controls>
+            <a-cursor id="cursor"
+            animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+            event-set__1="_event: mouseenter; color: springgreen"
+            event-set__2="_event: mouseleave; color: black"
+            raycaster="objects: .link"></a-cursor>
+        </a-entity> -->
+        <!-- <a-entity camera look-controls mouse-cursor>
+            <a-cursor geometry="primitive: ring" material="color: #FFC0CB;    shader: flat"></a-
+        </a-entity> -->
+      <!-- </a-entity> -->
+
+      <a-entity position="0 1.8 2">
           <a-entity camera look-controls mouse-cursor>
               <a-cursor geometry="primitive: ring" material="color: #FFC0CB;    shader: flat"></a-
           </a-entity>
