@@ -16,7 +16,6 @@ AFRAME.registerComponent('custom', {
   }
 });
 
-
 $(document).ready( function() {
   if ( $('#audio1').length ) {
     $('#audio1').get(0).play();
